@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 10 young Lords</title>
+<body>
+
+<table>
+    <caption>Lord list</caption>
+    <tr>
+        <th>name lord</th>
+        <th>age</th>
+        <th>
+            info
+        </th>
+
+    </tr>
+    <div th:each="lord : ${lords}">
+        <tr>
+            <td th:text="${lord.getName()}">name lord</td>
+            <td th:text="${lord.getAge()}">age</td>
+
+            <td>
+                <form th:method="GET"
+                      th:action="@{/lords_of_planets/info_lord/{id}(id=${lord.getId()})}">
+                    <input type="submit" value="View"/></form>
+            </td>
+        </tr>
+    </div>
+</table>
+<br/>
+
+
+
+<a th:href="@{/lords_of_planets}" class="button"> Back </a>
+
+
+</body>
+</html>

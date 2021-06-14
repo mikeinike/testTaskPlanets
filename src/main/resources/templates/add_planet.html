@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New planet</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/lords_of_planets/add_planet}" th:object="${planet}">
+
+    <label for="namePlanet">Enter name planet: </label>
+    <input type="text" th:field="*{name}" id="namePlanet"/>
+
+    <br/>
+
+    <input type="submit" value="Create!"/>
+</form>
+<br/>
+<a th:href="@{/lords_of_planets}" class="button"> Back </a>
+</body>
+</html>

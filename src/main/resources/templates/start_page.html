@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lords and planets</title>
+</head>
+<body>
+<table class="table-lord">
+    <caption>Lord list</caption>
+    <tr>
+        <th>name lord</th>
+        <th>age</th>
+        <th>
+            info
+        </th>
+        <th>Death</th>
+        <th>Edit</th>
+    </tr>
+    <div th:each="lord : ${lords}">
+        <tr>
+            <td th:text="${lord.getName()}">name lord</td>
+            <td th:text="${lord.getAge()}">age</td>
+            <td>
+                <form th:method="GET"
+                      th:action="@{/lords_of_planets/info_lord/{id}(id=${lord.getId()})}">
+                    <input type="submit" value="View"/></form>
+            </td>
+            <td>
+                <form th:method="DELETE"
+                      th:action="@{/lords_of_planets/delete_lord/{id}(id=${lord.getId()})}">
+                    <input type="submit" value="Delete"/></form>
+            </td>
+
+            <td>
+                <form method="get"
+                      th:action="@{/lords_of_planets/edit_lord/{id}(id=${lord.getId()})}">
+                    <input type="submit" value="Edit"/></form>
+            </td>
+        </tr>
+    </div>
+</table>
+<form class="button-add-lord" method="get" action="/lords_of_planets/add_lord">
+    <button class="button" type="submit">Add Lord</button>
+</form>
+<br/>
+
+<form class="button-view-top-10-young-lord" method="get" action="/lords_of_planets/top_10_young_lords">
+    <button class="button" type="submit">Top 10 young Lords</button>
+</form>
+<br/>
+
+<form class="button-view-lazy-lord" method="get" action="/lords_of_planets/list_lazy_lords">
+    <button class="button" type="submit">View lazy Lords</button>
+</form>
+<br/>
+
+<table th:class="table-free-planet">
+    <caption>List free planet</caption>
+    <tr>
+        <th>name free planet</th>
+        <th>Destroy</th>
+        <th>Edit</th>
+    </tr>
+    <div th:each="planet : ${planets}">
+        <tr>
+            <td th:text="${planet.getName()}">name planet</td>
+
+            <td>
+                <form th:method="DELETE"
+                      th:action="@{/lords_of_planets/delete_planet/{id_planet}(id_planet=${planet.getId()})}">
+                    <input type="submit" value="Delete"/></form>
+            </td>
+            <td>
+                <form method="get"
+                      th:action="@{/lords_of_planets/edit_planet/{id}(id=${planet.getId()})}">
+                    <input type="submit" value="Edit"/></form>
+            </td>
+        </tr>
+    </div>
+</table>
+<br/>
+
+<form class="button-add-planet" method="get" action="/lords_of_planets/add_planet">
+    <button class="button" type="submit">Add Planet</button>
+</form>
+<br/>
+</body>
+</html>

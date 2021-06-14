@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit_lord</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/lords_of_planets/edit_lord/{id}(id=${lord.getId()})}" th:object="${lord}">
+
+    <label for="nameLord">Enter name lord: </label>
+    <input type="text" th:field="*{name}" id="nameLord"/>
+
+    <br/>
+
+    <label for="age">Enter age: </label>
+    <input type="text" th:field="*{age}" id="age"/>
+
+    <br/>
+
+    <input type="submit" value="Save!"/>
+</form>
+<br/>
+<a th:href="@{/lords_of_planets}" class="button"> Back </a>
+</body>
+</html>

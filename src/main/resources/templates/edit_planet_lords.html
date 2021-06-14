@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit planet</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/lords_of_planets/info_lord/{lord_id}/edit_lords_planet/{planet_id}(lord_id=${lord_id},planet_id=${planet.getId()})}" th:object="${planet}">
+
+    <label for="namePlanet">Enter name planet: </label>
+    <input type="text" th:field="*{name}" id="namePlanet"/>
+
+    <br/>
+
+    <input type="submit" value="Save!"/>
+</form>
+<br/>
+<a th:href="@{/lords_of_planets/info_lord/{lord_id}(lord_id=${lord_id})}" class="button"> Back </a>
+</body>
+</html>
